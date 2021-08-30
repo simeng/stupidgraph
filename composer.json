@@ -1,0 +1,19 @@
+{
+    "name": "simeng/stupidgraph",
+    "description": "A stupid simple graph without any functionality",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Simeng\\Stupidgraph\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Simen Graaten",
+            "email": "simeng@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
