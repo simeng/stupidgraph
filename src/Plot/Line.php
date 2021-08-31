@@ -1,8 +1,8 @@
 <?php
 
-namespace Simeng\Stupidgraph;
+namespace Simeng\Stupidgraph\Plot;
 
-class Plot {
+class Line {
     public function setScale($xScale, $yScale) 
     {
         $this->xScale = $xScale;
@@ -12,8 +12,8 @@ class Plot {
 
         $points = [];
         foreach ($values as $num => $v) {
-            $points[] = $this->xScale->get($num);
-            $points[] = $height - $this->yScale->get($v);
+            $points[] = $x + $this->xScale->get($num);
+            $points[] = $y + $height - $this->yScale->get($v);
         }
         imageopenpolygon($image, $points, count($points)/2, $color);
 
