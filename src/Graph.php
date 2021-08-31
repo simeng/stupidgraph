@@ -37,11 +37,22 @@ class Graph {
         $this->backgroundColor = $color;
     }
 
+    public function setScale($xScale, $yScale)
+    {
+        $this->xScale = $xScale->setRange(0, $this->plotWidth);
+        $this->yScale = $yScale->setRange(0, $this->plotHeight);
+    }
+
     public function addDataset($set) {
         $this->sets[] = $set;
     }
 
     public function addAxis($axis, $direction) {
+        if ($direction === Axis::DIRECTION_UP) {
+            $axis->setScale($this->yScale);
+        } elseif ($direction === Axis::DIRECTION_RIGHT) {
+            $axis->setScale($this->xScale);
+        }
         $this->axis[] = [
             'axis' => $axis,
             'direction' => $direction
@@ -51,6 +62,7 @@ class Graph {
     public function setPlot($plot) 
     {
         $this->plot = $plot;
+        $this->plot->setScale($this->xScale, $this->yScale);
     }
 
     public function draw()
